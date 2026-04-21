@@ -21,11 +21,11 @@ class Entity
 
     //----------------------------------------------PUBLIC----------------------------------------------    
     public:
-        //Constructor y destructor
+        //Constructor & destructor
         Entity(const std::string& name, int armorClass, int hitPoints, int walkSpeed, int flySpeed, int swimSpeed);
         virtual ~Entity();
 
-        //Funciones virtuales
+        //Virtual Functions
         virtual void displayInfo() const = 0;
         virtual bool performAction(const std::string& actionName) = 0;
 
