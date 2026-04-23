@@ -48,13 +48,34 @@ void CastingTime::displayInfo() const
             std::cout << "Hour";
 
             break;
+        case TimeUnit::Day:
+
+            std::cout << "Day";
+
+            break;
+
+        case TimeUnit::Special:
+
+            std::cout << "Special";
+
+            break;
 
     }
+    std::cout << std::endl;
 }
 int CastingTime::getAmount() const
 {
-    
+    return amount;
 }
 TimeUnit CastingTime::getTimeUnit() const
 {
+    return unit ;
+}
+void CastingTime::setAmount(int amount)
+{
+    this->amount = amount;
+}
+void CastingTime::setTimeUnit(TimeUnit unit)
+{
+    this->unit = unit;
 }

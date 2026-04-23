@@ -14,5 +14,7 @@ class CastingTime
         void displayInfo() const;
         int getAmount() const;
         TimeUnit getTimeUnit() const;
+        void setAmount(int amount);
+        void setTimeUnit(TimeUnit unit);
 };
 #endif
