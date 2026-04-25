@@ -1,7 +1,7 @@
 #include "Spell.h"
 #include <iostream>
 
-std::string spellSchoolToString(SpellSchool school)
+static std::string spellSchoolToString(SpellSchool school)
 {
     switch (school)
     {
@@ -27,7 +27,7 @@ std::string spellSchoolToString(SpellSchool school)
 }
 
 //Constructor
-Spell::Spell(const std::string& name, int level, SpellSchool school, int castingTime, int duration, std::string description)
+Spell::Spell(const std::string& name, int level, SpellSchool school, const CastingTime& castingTime, int duration, std::string description)
     : name(name), level(level), school(school), castingTime(castingTime), duration(duration), description(description)
 {
 }

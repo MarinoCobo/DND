@@ -2,20 +2,20 @@
 #define SPELL_H
 #include <string>
 #include "DNDTypes.h"
-#include "CastingTime.h"
 
 class Spell
 {
     private:
         std::string name;
         int level;
-        SpellSchool school; 
+        SpellSchool school;
         CastingTime castingTime;
+        int duration;
         std::string description;
 
     public:
-        //Constructor
-        Spell(const std::string& name, int level, SpellSchool school, int castingTime, int duration, std::string description);
+        //Constructir
+        Spell(const std::string& name, int level, SpellSchool school, const CastingTime& castingTime, int duration, std::string description);
         
         //Getters
         std::string getName() const;
@@ -29,8 +29,8 @@ class Spell
         void setName(const std::string& name);
         void setLevel(int level);
         void setSpellSchool(SpellSchool school);
-        void setCastingTimeAmount(int castingTime);
-        void setCastingTimeUnit(TimeUnit unit);
+        void setCastingTime(int castingTime);
+        void setDuration(int duration);
         void setDescription(const std::string& description);
         
 };
