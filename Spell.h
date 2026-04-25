@@ -9,19 +9,29 @@ class Spell
         std::string name;
         int level;
         SpellSchool school;
-        int castingTime;
+        CastingTime castingTime;
         int duration;
         std::string description;
 
     public:
-        Spell(std::string name, int level, SpellSchool school, int castingTime, int duration, std::string description);
-        std::string getName();
-        int getLevel();
-        void displayInfo();
-        SpellSchool getSchool();
-        int getCastingTime();
-        int getDuration();
+        //Constructir
+        Spell(const std::string& name, int level, SpellSchool school, int castingTime, int duration, std::string description);
+        
+        //Getters
+        std::string getName() const;
+        int getLevel() const;
+        void displayInfo() const;
+        SpellSchool getSchool() const;
+        int getCastingTime() const;
+        int getDuration() const;
 
+        //Setters
+        void setName(const std::string& name);
+        void setLevel(int level);
+        void setSpellSchool(SpellSchool school);
+        void setCastingTime(int castingTime);
+        void setDuration(int duration);
+        void setDescription(const std::string& description);
         
 };
 #endif
