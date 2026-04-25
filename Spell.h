@@ -2,6 +2,7 @@
 #define SPELL_H
 #include <string>
 #include "DNDTypes.h"
+#include "CastingTime.h"
 
 class Spell
 {
