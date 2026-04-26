@@ -43,17 +43,17 @@ void SpellDuration::displayInfo() const
 {
     if(isInstantaneous)
     {
-        std::cout << "This spell is Instantaneous" << std::endl;
+        std::cout << "Instantaneous" << std::endl;
     }
     else
     {
         if(isUntilDispelled)
         {
-            std::cout << "This spell lasts until dispelled" << std::endl;
+            std::cout << "Until dispelled" << std::endl;
         }
         else
         {
-            std::cout << "The spell lasts " << amount << " " << timeUnitToString(unit) << std::endl;
+            std::cout << " " << amount << " " << timeUnitToString(unit) << std::endl;
         }
     }
     if(requiresConcentration)

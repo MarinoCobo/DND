@@ -27,8 +27,8 @@ static std::string spellSchoolToString(SpellSchool school)
 }
 
 //Constructor
-Spell::Spell(const std::string& name, int level, SpellSchool school, const CastingTime& castingTime, int duration, std::string description)
-    : name(name), level(level), school(school), castingTime(castingTime), duration(duration), description(description)
+Spell::Spell(const std::string& name, int level, SpellSchool school, const CastingTime& castingTime, const SpellDuration& spellDuration, const std::string& description)
+    : name(name), level(level), school(school), castingTime(castingTime), spellDuration(spellDuration), description(description)
 {
 }
 
@@ -46,21 +46,23 @@ void Spell::displayInfo() const
     std::cout << "Name: " << name << std::endl;
     std::cout << "Level: " << level << std::endl;
     std::cout << "School: " << spellSchoolToString(school) << std::endl;
-    std::cout << "Casting Time: " << castingTime << std::endl;
-    std::cout << "Duration: " << duration << std::endl;
+    std::cout << "Casting time: ";
+    castingTime.displayInfo();
+    std::cout << "Duration: ";
+    spellDuration.displayInfo();
     std::cout << "Description: " << description << std::endl;
 }
 SpellSchool Spell::getSchool() const
 {
     return school;
 }
-int Spell::getCastingTime() const
+CastingTime Spell::getCastingTime() const
 {
-    return castingTime;
+    return this->castingTime;
 }
-int Spell::getDuration() const
+SpellDuration Spell::getSpellDuration() const
 {
-    return duration;
+    return this->spellDuration;
 }
 
 //Setters
@@ -76,13 +78,13 @@ void Spell::setSpellSchool(SpellSchool school)
 {
     this->school = school;
 }
-void Spell::setCastingTime(int castingTime)
+void Spell::setCastingTime(const CastingTime& castingTime)
 {
-    this->castingTime = castingTime;
+    this->castingTime = castingTime;   
 }
-void Spell::setDuration(int duration)
+void Spell::setDuration(const SpellDuration& spellDuration)
 {
-    this->duration = duration;
+    this->spellDuration = spellDuration;
 }
 void Spell::setDescription(const std::string& description)
 {

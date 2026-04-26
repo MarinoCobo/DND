@@ -43,7 +43,7 @@ CastingTime::CastingTime(int amount, TimeUnit unit)
 //Getters
 void CastingTime::displayInfo() const 
 {
-    std::cout << "The casting time is: " << amount << " " << timeUnitToString(unit) << std::endl;
+    std::cout << amount << " " << timeUnitToString(unit) << std::endl;
     std::cout << std::endl;
 }
 int CastingTime::getAmount() const
