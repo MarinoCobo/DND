@@ -1,30 +1,79 @@
 #include "SpellDuration.h"
 #include <iostream>
 
-static std::string timeUnitToString(TimeUnit unit)
+static std::string timeUnitToString(TimeUnit unit, int amount)
 {
     switch (unit)
     {
         case TimeUnit::Action:
-            return "Action";
+            if (amount == 1)
+            {
+                return "Action";
+            }
+            else
+            {
+                return "Actions";   
+            }
 
         case TimeUnit::BonusAction:
-            return "Bonus Action";
+            if (amount == 1)
+            {
+                return "Bonus Action";
+            }
+            else
+            {
+                return "Bonus Actions";   
+            }
 
         case TimeUnit::Reaction:
-            return "Reaction";
+            if (amount == 1)
+            {
+                return "Reaction";
+            }
+            else
+            {
+                return "Reactions";   
+            }
 
         case TimeUnit::Round:
-            return "Round";
+            if (amount == 1)
+            {
+                return "Round";
+            }
+            else
+            {
+                return "Rounds";   
+            }
 
         case TimeUnit::Minute:
-            return "Minute";
+            if (amount == 1)
+            {
+                return "Minute";
+            }
+            else
+            {
+                return "Minutes";   
+            }
 
         case TimeUnit::Hour:
-            return "Hour";
+            if (amount == 1)
+            {
+                return "Hour";
+            }
+            else
+            {
+                return "Hours";   
+            }
 
         case TimeUnit::Day:
-            return "Day";
+            if (amount == 1)
+            {
+                return "Day";
+            }
+            else
+            {
+                return "Days";   
+            }
 
         case TimeUnit::Special:
             return "Special";
@@ -53,11 +102,37 @@ void SpellDuration::displayInfo() const
         }
         else
         {
-            std::cout << " " << amount << " " << timeUnitToString(unit) << std::endl;
+            std::cout << amount << " " << timeUnitToString(unit, amount) << std::endl;
         }
     }
     if(requiresConcentration)
     {
         std::cout << "This spell requires concentration.";
+        std::cout << std::endl;
     }
+}
+
+int SpellDuration::getAmount() const
+{
+    return amount;
+}
+
+TimeUnit SpellDuration::getTimeUnit() const
+{
+    return unit;
+}
+
+bool SpellDuration::getRequiresConcentration() const
+{
+    return requiresConcentration;
+}
+
+bool SpellDuration::getIsInstantaneous() const
+{
+    return isInstantaneous;
+}
+
+bool SpellDuration::getIsUntilDispelled() const
+{
+    return isUntilDispelled;
 }

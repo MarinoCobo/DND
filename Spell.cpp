@@ -33,14 +33,7 @@ Spell::Spell(const std::string& name, int level, SpellSchool school, const Casti
 }
 
 //Getters
-std::string Spell::getName() const
-{
-    return name;
-}
-int Spell::getLevel() const
-{
-    return level;
-}
+
 void Spell::displayInfo() const
 {
     std::cout << "Name: " << name << std::endl;
@@ -52,17 +45,34 @@ void Spell::displayInfo() const
     spellDuration.displayInfo();
     std::cout << "Description: " << description << std::endl;
 }
+
+std::string Spell::getName() const
+{
+    return name;
+}
+int Spell::getLevel() const
+{
+    return level;
+}
+
 SpellSchool Spell::getSchool() const
 {
     return school;
 }
-CastingTime Spell::getCastingTime() const
+
+const CastingTime& Spell::getCastingTime() const
 {
     return this->castingTime;
 }
-SpellDuration Spell::getSpellDuration() const
+
+const SpellDuration& Spell::getSpellDuration() const
 {
     return this->spellDuration;
+}
+
+std::string Spell::getDescription() const
+{
+    return description;
 }
 
 //Setters

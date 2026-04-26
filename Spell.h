@@ -20,12 +20,15 @@ class Spell
         Spell(const std::string& name, int level, SpellSchool school, const CastingTime& castingTime, const SpellDuration& spellDuration, const std::string& description);
         
         //Getters
+        void displayInfo() const;
+
         std::string getName() const;
         int getLevel() const;
-        void displayInfo() const;
         SpellSchool getSchool() const;
-        CastingTime getCastingTime() const;
-        SpellDuration getSpellDuration() const;
+        const CastingTime& getCastingTime() const;
+        const SpellDuration& getSpellDuration() const;
+        std::string getDescription() const;
+
 
         //Setters
         void setName(const std::string& name);

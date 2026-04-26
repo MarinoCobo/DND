@@ -1,13 +1,14 @@
 #include "SpellBook.h"
 #include <iostream>
 
-void SpellBook::addSpell(Spell spell)
+void SpellBook::addSpell(const Spell& spell)
 {
     this->spellBook.push_back(spell);
 }
-Spell* SpellBook::findSpellByName(std::string name)
+
+Spell* SpellBook::findSpellByName(const std::string& name)
 {
-    for(int j = 0; j < this->spellBook.size(); j++)
+    for(size_t j = 0; j < this->spellBook.size(); j++)
     {
         if (spellBook[j].getName() == name)
         {
@@ -16,9 +17,9 @@ Spell* SpellBook::findSpellByName(std::string name)
     }
     return nullptr;
 }
-void SpellBook::showAllSpells()
+void SpellBook::showAllSpells() const
 {
-    for(int j = 0; j < this->spellBook.size(); j++)
+    for(size_t j = 0; j < this->spellBook.size(); j++)
     {
         std::cout << spellBook[j].getName();
         if (j < this->spellBook.size() - 1)
@@ -26,10 +27,11 @@ void SpellBook::showAllSpells()
             std::cout << ", ";
         }
     } 
+    std::cout << std::endl;
 }
-bool SpellBook::deleteSpell(std::string name)
+bool SpellBook::deleteSpell(const std::string& name)
 {
-    for(int j = 0; j < this->spellBook.size(); j++)
+    for(size_t j = 0; j < this->spellBook.size(); j++)
     {
         if (spellBook[j].getName() == name)
         {

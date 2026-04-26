@@ -10,10 +10,10 @@ class SpellBook
         std::vector<Spell> spellBook;
     
     public:
-        void addSpell(Spell spell);
-        Spell* findSpellByName (std::string name);
-        void showAllSpells();
-        bool deleteSpell(std::string name);
+        void addSpell(const Spell& spell);
+        Spell* findSpellByName (const std::string& name);
+        void showAllSpells() const;
+        bool deleteSpell(const std::string& name);
 };
 
 #endif
