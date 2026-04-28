@@ -1,4 +1,4 @@
-#include "Serialization.h"
+#include "serialization.h"
 
 void to_json(json& j, const CastingTime& ct)
 {

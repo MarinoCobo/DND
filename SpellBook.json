@@ -1,0 +1,21 @@
+{
+    "spells": [
+        {
+            "castingTime": {
+                "amount": 1,
+                "unit": 0
+            },
+            "description": "A bright streak flashes from your pointing finger to a point you choose, then blossoms into an explosion of flame. Each creature in the area makes a Dexterity saving throw, taking fire damage on a failed save.",
+            "level": 3,
+            "name": "FireBall",
+            "school": 4,
+            "spellDuration": {
+                "amount": 0,
+                "isInstantaneous": true,
+                "isUntilDispelled": false,
+                "requiresConcentration": false,
+                "unit": 7
+            }
+        }
+    ]
+}
