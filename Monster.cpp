@@ -84,7 +84,7 @@ void Monster::displayInfo() const
     }
 }
 
-bool Monster::performAction(const std::string& actionName) const
+bool Monster::performAction(const std::string& actionName)
 {
     for (const Action& action : actions)
     {

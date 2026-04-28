@@ -41,7 +41,7 @@ class Monster : public Entity
         virtual ~Monster();
 
         void displayInfo() const override;
-        bool performAction(const std::string& actionName) const override;
+        bool performAction(const std::string& actionName) override;
 
         //Setters
         void setSize(Size size);
