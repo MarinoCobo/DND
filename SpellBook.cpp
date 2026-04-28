@@ -31,18 +31,21 @@ void SpellBook::showAllSpells() const
     } 
     std::cout << std::endl;
 }
+
 bool SpellBook::deleteSpell(const std::string& name)
 {
-    for(size_t j = 0; j < this->spellBook.size(); j++)
+    for (auto it = spellBook.begin(); it != spellBook.end(); ++it)
     {
-        if (spellBook[j].getName() == name)
+        if (it->getName() == name)
         {
-            spellBook.erase(spellBook.begin() + j);
+            spellBook.erase(it);
             return true;
         }
-    } 
+    }
+
     return false;
 }
+
 void SpellBook::saveToFile(const std::string& filename) const
 {
     json data;
