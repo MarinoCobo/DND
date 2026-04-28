@@ -27,7 +27,7 @@ class Entity
 
         //Virtual Functions
         virtual void displayInfo() const = 0;
-        virtual bool performAction(const std::string& actionName) = 0;
+        virtual bool performAction(const std::string& actionName) const = 0;
 
         // Setters
         void setName(const std::string& name);
