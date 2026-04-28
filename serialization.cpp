@@ -52,12 +52,31 @@ void to_json(json& j, const Spell& s)
 
 void from_json(const json& j, Spell& s)
 {
+    const json& castingTimeJson = j.at("castingTime");
+
+    CastingTime castingTime(
+        castingTimeJson.at("amount").get<int>(),
+        static_cast<TimeUnit>(castingTimeJson.at("unit").get<int>())
+    );
+
+    const json& spellDurationJson = j.at("spellDuration");
+
+    SpellDuration spellDuration(
+        spellDurationJson.at("amount").get<int>(),
+        static_cast<TimeUnit>(spellDurationJson.at("unit").get<int>()),
+        spellDurationJson.at("requiresConcentration").get<bool>(),
+        spellDurationJson.at("isInstantaneous").get<bool>(),
+        spellDurationJson.at("isUntilDispelled").get<bool>()
+    );
+
     s = Spell(
         j.at("name").get<std::string>(),
         j.at("level").get<int>(),
         static_cast<SpellSchool>(j.at("school").get<int>()),
-        j.at("castingTime").get<CastingTime>(),
-        j.at("spellDuration").get<SpellDuration>(),
+        castingTime,
+        spellDuration,
         j.at("description").get<std::string>()
     );
 }
+
+

@@ -14,6 +14,8 @@ class SpellBook
         Spell* findSpellByName (const std::string& name);
         void showAllSpells() const;
         bool deleteSpell(const std::string& name);
+        void saveToFile(const std::string& filename) const;
+        void loadFromFile(const std::string& filename);
 };
 
 #endif

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <limits>
 #include "SpellBook.h"
 #include "Spell.h"
 #include "CastingTime.h"
@@ -70,10 +71,13 @@ TimeUnit getTimeUnitFromUser()
     }
 }
 
-int main()
+void clearInputBuffer()
 {
-    SpellBook spellBook;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
 
+Spell createSpellFromUser()
+{
     std::string name;
     int level;
     SpellSchool school;
@@ -85,6 +89,8 @@ int main()
     bool isInstantaneous;
     bool isUntilDispelled;
     std::string description;
+
+    clearInputBuffer();
 
     std::cout << "Enter spell name: ";
     std::getline(std::cin, name);
@@ -111,7 +117,7 @@ int main()
     std::cout << "Is until dispelled? (1 = yes, 0 = no): ";
     std::cin >> isUntilDispelled;
 
-    std::cin.ignore();
+    clearInputBuffer();
 
     std::cout << "Enter description: ";
     std::getline(std::cin, description);
@@ -119,15 +125,119 @@ int main()
     CastingTime castingTime(castingAmount, castingUnit);
     SpellDuration spellDuration(durationAmount, durationUnit, requiresConcentration, isInstantaneous, isUntilDispelled);
 
-    Spell newSpell(name, level, school, castingTime, spellDuration, description);
+    return Spell(name, level, school, castingTime, spellDuration, description);
+}
 
-    spellBook.addSpell(newSpell);
+int main()
+{
+    SpellBook spellBook;
+    const std::string filename = "SpellBook.json";
+    int option = 0;
 
-    std::cout << "\nSpell created successfully.\n\n";
-    newSpell.displayInfo();
+    do
+    {
+        std::cout << "\n===== SPELLBOOK MENU =====\n";
+        std::cout << "1. Load spellbook from file\n";
+        std::cout << "2. Add spell\n";
+        std::cout << "3. Show all spells\n";
+        std::cout << "4. Find spell by name\n";
+        std::cout << "5. Delete spell by name\n";
+        std::cout << "6. Save spellbook to file\n";
+        std::cout << "7. Save and exit\n";
+        std::cout << "0. Exit without saving\n";
+        std::cout << "Option: ";
+        std::cin >> option;
 
-    std::cout << "\nCurrent spellbook:\n";
-    spellBook.showAllSpells();
+        switch (option)
+        {
+            case 1:
+            {
+                spellBook.loadFromFile(filename);
+                std::cout << "Spellbook loaded from " << filename << ".\n";
+                break;
+            }
+
+            case 2:
+            {
+                Spell newSpell = createSpellFromUser();
+                spellBook.addSpell(newSpell);
+                std::cout << "Spell added successfully.\n";
+                break;
+            }
+
+            case 3:
+            {
+                std::cout << "Current spellbook:\n";
+                spellBook.showAllSpells();
+                break;
+            }
+
+            case 4:
+            {
+                std::string name;
+                clearInputBuffer();
+                std::cout << "Enter spell name to find: ";
+                std::getline(std::cin, name);
+
+                Spell* foundSpell = spellBook.findSpellByName(name);
+
+                if (foundSpell != nullptr)
+                {
+                    foundSpell->displayInfo();
+                }
+                else
+                {
+                    std::cout << "Spell not found.\n";
+                }
+                break;
+            }
+
+            case 5:
+            {
+                std::string name;
+                clearInputBuffer();
+                std::cout << "Enter spell name to delete: ";
+                std::getline(std::cin, name);
+
+                if (spellBook.deleteSpell(name))
+                {
+                    std::cout << "Spell deleted successfully.\n";
+                }
+                else
+                {
+                    std::cout << "Spell not found.\n";
+                }
+                break;
+            }
+
+            case 6:
+            {
+                spellBook.saveToFile(filename);
+                std::cout << "Spellbook saved to " << filename << ".\n";
+                break;
+            }
+
+            case 7:
+            {
+                spellBook.saveToFile(filename);
+                std::cout << "Spellbook saved. Exiting.\n";
+                break;
+            }
+
+            case 0:
+            {
+                std::cout << "Exiting without saving.\n";
+                break;
+            }
+
+            default:
+            {
+                std::cout << "Invalid option.\n";
+                break;
+            }
+        }
+
+    } while (option != 0 && option != 7);
 
     return 0;
 }
