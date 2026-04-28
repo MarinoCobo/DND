@@ -8,11 +8,7 @@ class Trait
         std::string name;
         std::string description;
     public:
-        Trait(const std::string& name, const std::string& description)
-            : name(name), description(description)
-            {
-            }
-        void displayInfo() const;
+        Trait(const std::string& name, const std::string& description);
                 
         //Setters
         void setName(const std::string& name);

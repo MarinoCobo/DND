@@ -36,7 +36,7 @@ public:
     Ability getSpellcastingAbility() const;
 
     void addSpellUse(Spell* spell, int maxUses, RechargeType rechargeType);
-    bool castSpell(const std::string& spellName);
+    bool castSpell(const std::string& spellName) override;
 
 
     int calculateMagicPower() const override;

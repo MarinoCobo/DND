@@ -70,3 +70,8 @@ int Bestiary::getMonsterCount() const
 {
     return static_cast<int>(monsters.size());
 }
+
+const std::vector<Monster*>& Bestiary::getMonsters() const
+{
+    return monsters;
+}
