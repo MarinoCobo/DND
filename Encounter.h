@@ -8,11 +8,13 @@
 class Encounter
 {
 private:
-    std::vector<Monster*> monsters;
+    
     std::string difficulty;
     int totalExperience;
 
 public:
+    std::vector<Monster*> monsters;
+
     Encounter(const std::string& difficulty);
 
     void addMonster(Monster* monster);

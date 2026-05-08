@@ -1,5 +1,5 @@
 #include "SpellBook.h"
-#include "serialization.h"
+#include "Serialization.h"
 #include <iostream>
 #include <fstream>
 

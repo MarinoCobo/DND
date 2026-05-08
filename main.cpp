@@ -346,6 +346,55 @@ int main()
 
                 Encounter encounter = encounterGenerator.generateEncounter(partyLevel, partySize, difficulty);
                 encounter.showEncounter();
+                while (encounter.monsters.size() != 0)
+                {
+                    int temp_dye = 0;
+                    int temp_monster = 0;
+                    std::cout << "Enter dice result: ";
+                    std::cin >> temp_dye;
+                    std::cout << std::endl;
+                    std::cout << std::endl;
+                    if(temp_dye <= 6 && temp_dye > 0)
+                    {
+                        std::cout << "Missed atack";
+                        std::cout << std::endl;
+                    }
+                    if(temp_dye > 6 && temp_dye <= 12) 
+                    {
+                        int atack_power = 0;
+                        std::cout << "Enter your atack power: \n";
+                        std::cin >> atack_power;
+                        int monster_new_armour_class = encounter.monsters[temp_monster]->getArmorClass() - atack_power;
+
+                        encounter.monsters[temp_monster]->setArmorClass(monster_new_armour_class);
+                        if(encounter.monsters[temp_monster]->getArmorClass() > 0)
+                        {
+                            std::cout << "Remaining Armor Class: " << encounter.monsters[temp_monster]->getArmorClass() << std::endl;
+                        }
+                        else 
+                        {
+                            std::cout << "Monster is killed\n";
+                            encounter.monsters.pop_back();
+                        }
+                    
+                    }
+                    if(temp_dye <= 0 or temp_dye > 12)
+                    {
+                        std::cout << "Enter valid number" << std::endl;
+                    }
+                    std::cout << "To print your current encounter type '1'\n";
+                    int show = 0;
+                    std::cin >> show;
+                    if (show == 1)
+                    {
+                        for(int j = 0; j < encounter.monsters.size(); j++)
+                        {
+                            encounter.monsters[j]->displayInfo();
+                        }
+                    }
+
+
+                }
                 break;
             }
 
